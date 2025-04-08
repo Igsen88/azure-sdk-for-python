@@ -45,7 +45,7 @@ with project_client:
     toolset.add(code_interpreter)
 
     # To enable tool calls executed automatically
-    project_client.agents.set_toolcalls(toolset=toolset)
+    project_client.agents.set_auto_toolcalls(toolset=toolset)
 
     agent = project_client.agents.create_agent(
         model=os.environ["MODEL_DEPLOYMENT_NAME"],

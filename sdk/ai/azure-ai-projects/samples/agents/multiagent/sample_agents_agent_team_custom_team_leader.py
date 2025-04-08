@@ -74,7 +74,7 @@ if model_deployment_name is not None:
         toolset = ToolSet()
         toolset.add(default_function_tool)
 
-        project_client.agents.set_toolcalls(toolset=toolset)
+        project_client.agents.set_auto_toolcalls(toolset=toolset)
         agent_team.set_team_leader(
             model=model_deployment_name,
             name="TeamLeader",

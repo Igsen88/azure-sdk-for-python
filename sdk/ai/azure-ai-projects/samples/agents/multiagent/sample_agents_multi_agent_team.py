@@ -42,7 +42,7 @@ user_function_set_3: Set = {convert_temperature}
 
 model_deployment_name = os.getenv("MODEL_DEPLOYMENT_NAME")
 
-project_client.agents.set_toolcalls(
+project_client.agents.set_auto_toolcalls(
     function_tool=FunctionTool(
         {fetch_current_datetime, fetch_weather, send_email_using_recipient_name, convert_temperature}
     )

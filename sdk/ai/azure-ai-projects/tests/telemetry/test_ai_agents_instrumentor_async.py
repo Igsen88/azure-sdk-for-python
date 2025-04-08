@@ -427,14 +427,14 @@ class TestAiAgentsInstrumentor(AzureRecordedTestCase):
         toolset.add(functions)
 
         client = self.create_client(**kwargs)
-        client.agents.set_toolcalls(toolset=toolset)
+        client.agents.set_auto_toolcalls(toolset=toolset)
 
         agent = await client.agents.create_agent(
             model="gpt-4o", name="my-agent", instructions="You are helpful agent", toolset=toolset
         )
 
         # workaround for https://github.com/Azure/azure-sdk-for-python/issues/40086
-        client.agents.set_toolcalls(toolset=toolset)
+        client.agents.set_auto_toolcalls(toolset=toolset)
 
         thread = await client.agents.create_thread()
         message = await client.agents.create_message(
@@ -654,7 +654,7 @@ class TestAiAgentsInstrumentor(AzureRecordedTestCase):
         )
 
         # workaround for https://github.com/Azure/azure-sdk-for-python/issues/40086
-        client.agents.set_toolcalls(toolset=toolset)
+        client.agents.set_auto_toolcalls(toolset=toolset)
 
         thread = await client.agents.create_thread()
         message = await client.agents.create_message(

@@ -222,11 +222,11 @@ class TestAgentsOperations:
             function_in_toolset2 = set(toolset2.get_tool(tool_type=FunctionTool)._functions.values())
             function_tool = FunctionTool(function_in_toolset1)
             function_tool.add_functions(function_in_toolset2)
-            project_client.set_toolcalls(function_tool=function_tool)
+            project_client.set_auto_toolcalls(function_tool=function_tool)
         elif toolset1:
-            project_client.set_toolcalls(toolset=toolset1)
+            project_client.set_auto_toolcalls(toolset=toolset1)
         elif toolset2:
-            project_client.set_toolcalls(toolset=toolset2)
+            project_client.set_auto_toolcalls(toolset=toolset2)
 
     @patch("azure.ai.projects._patch.PipelineClient")
     @pytest.mark.parametrize(
@@ -548,7 +548,7 @@ class TestIntegrationAgentsOperations:
         toolset = ToolSet()
         toolset.add(functions)
         operation = AgentsOperations()
-        operation.set_toolcalls(toolset=toolset)
+        operation.set_auto_toolcalls(toolset=toolset)
         count = 0
 
         with operation.create_stream(thread_id="thread_id", agent_id="asst_01") as stream:

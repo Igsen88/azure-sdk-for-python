@@ -3308,7 +3308,7 @@ class AgentsOperations(AgentsOperationsGenerated):
         return super().delete_agent(agent_id, **kwargs)
 
     @overload
-    def set_toolcalls(self, *, functions: Set[Callable[..., Any]]) -> None:
+    def set_auto_toolcalls(self, *, functions: Set[Callable[..., Any]]) -> None:
         """Setup tool calls for the agent to be executed automatically.
 
         :keyword functions: A set of callable functions to be used as tools.
@@ -3316,7 +3316,7 @@ class AgentsOperations(AgentsOperationsGenerated):
         """
 
     @overload
-    def set_toolcalls(self, *, function_tool: _models.FunctionTool) -> None:
+    def set_auto_toolcalls(self, *, function_tool: _models.FunctionTool) -> None:
         """Setup tool calls for the agent to be executed automatically.
 
         :keyword function_tool: A FunctionTool object representing the tool to be used.
@@ -3324,7 +3324,7 @@ class AgentsOperations(AgentsOperationsGenerated):
         """
 
     @overload
-    def set_toolcalls(self, *, toolset: _models.ToolSet) -> None:
+    def set_auto_toolcalls(self, *, toolset: _models.ToolSet) -> None:
         """Setup tool calls for the agent to be executed automatically.
 
         :keyword toolset: A ToolSet object representing the set of tools to be used.
@@ -3332,7 +3332,7 @@ class AgentsOperations(AgentsOperationsGenerated):
         """
 
     @distributed_trace
-    def set_toolcalls(
+    def set_auto_toolcalls(
         self,
         *,
         functions: Optional[Set[Callable[..., Any]]] = None,

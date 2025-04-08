@@ -281,7 +281,7 @@ toolset.add(functions)
 toolset.add(code_interpreter)
 
 # To enable tool calls executed automatically
-project_client.agents.set_toolcalls(toolset=toolset)
+project_client.agents.set_auto_toolcalls(toolset=toolset)
 
 agent = project_client.agents.create_agent(
     model=os.environ["MODEL_DEPLOYMENT_NAME"],
@@ -525,7 +525,7 @@ Here is an example to use [user functions](https://github.com/Azure/azure-sdk-fo
 functions = FunctionTool(user_functions)
 toolset = ToolSet()
 toolset.add(functions)
-project_client.agents.set_toolcalls(toolset=toolset)
+project_client.agents.set_auto_toolcalls(toolset=toolset)
 
 agent = project_client.agents.create_agent(
     model=os.environ["MODEL_DEPLOYMENT_NAME"],
@@ -550,7 +550,7 @@ functions = AsyncFunctionTool(user_async_functions)
 
 toolset = AsyncToolSet()
 toolset.add(functions)
-project_client.agents.set_toolcalls(toolset=toolset)
+project_client.agents.set_auto_toolcalls(toolset=toolset)
 
 agent = await project_client.agents.create_agent(
     model=os.environ["MODEL_DEPLOYMENT_NAME"],
@@ -986,7 +986,7 @@ while run.status in ["queued", "in_progress", "requires_action"]:
 
 <!-- END SNIPPET -->
 
-To have the SDK poll on your behalf and call `function tools`, use the `create_and_process_run` method. Note that `function tools` will only be invoked if they are provided by `set_toolcalls`.
+To have the SDK poll on your behalf and call `function tools`, use the `create_and_process_run` method. Note that `function tools` will only be invoked if they are provided by `set_auto_toolcalls`.
 
 Here is an example:
 
