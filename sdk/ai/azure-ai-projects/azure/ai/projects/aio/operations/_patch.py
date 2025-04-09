@@ -13,7 +13,6 @@ import io
 import logging
 import os
 import time
-from typing import Callable, Set
 from pathlib import Path
 from typing import (
     IO,
@@ -35,7 +34,6 @@ from typing import (
 
 from azure.core.credentials import TokenCredential
 from azure.core.exceptions import ResourceNotFoundError
-from azure.core.tracing.decorator import distributed_trace
 from azure.core.tracing.decorator_async import distributed_trace_async
 
 from ... import models as _models
