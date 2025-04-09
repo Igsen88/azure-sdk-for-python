@@ -35,7 +35,7 @@ model_deployment_name = os.getenv("MODEL_DEPLOYMENT_NAME")
 if model_deployment_name is not None:
     AgentTraceConfigurator(project_client=project_client).setup_tracing()
     with project_client:
-        project_client.agents.set_auto_toolcalls(functions={_create_task})
+        project_client.agents.enable_auto_function_calls(functions={_create_task})
         agent_team = AgentTeam("test_team", project_client=project_client)
         agent_team.add_agent(
             model=model_deployment_name,

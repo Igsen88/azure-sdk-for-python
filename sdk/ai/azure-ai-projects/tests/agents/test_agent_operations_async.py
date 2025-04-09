@@ -224,11 +224,11 @@ class TestAgentsOperations:
             function_in_toolset2 = set(toolset2.get_tool(tool_type=AsyncFunctionTool)._functions.values())
             function_tool = AsyncFunctionTool(function_in_toolset1)
             function_tool.add_functions(function_in_toolset2)
-            project_client.set_auto_toolcalls(function_tool=function_tool)
+            project_client.enable_auto_function_calls(function_tool=function_tool)
         elif toolset1:
-            project_client.set_auto_toolcalls(toolset=toolset1)
+            project_client.enable_auto_function_calls(toolset=toolset1)
         elif toolset2:
-            project_client.set_auto_toolcalls(toolset=toolset2)
+            project_client.enable_auto_function_calls(toolset=toolset2)
 
     @pytest.mark.asyncio
     @patch("azure.ai.projects.aio._patch.AsyncPipelineClient")
@@ -554,7 +554,7 @@ class TestIntegrationAgentsOperations:
         toolset.add(functions)
 
         operation = AgentsOperations()
-        operation.set_auto_toolcalls(toolset=toolset)
+        operation.enable_auto_function_calls(toolset=toolset)
         count = 0
 
         async with await operation.create_stream(thread_id="thread_id", agent_id="asst_01") as stream:
