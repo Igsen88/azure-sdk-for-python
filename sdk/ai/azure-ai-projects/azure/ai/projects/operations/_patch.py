@@ -1834,8 +1834,9 @@ class AgentsOperations(AgentsOperationsGenerated):
                                 thread_id=thread_id, run_id=run.id, tool_outputs=tool_outputs
                             )
                     else:
+                        logging.warning("Cancelling run.  Automatic function calls not set.")
                         logging.warning(
-                            "Cancelling run.  Automatic function calls not set.   Either set it by enable_auto_function_calls or invoke function calls manually along with create_run."
+                            "Either set it by enable_auto_function_calls or invoke function calls manually along with create_run."
                         )
                         self.cancel_run(thread_id=thread_id, run_id=run.id)
                         break
