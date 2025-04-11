@@ -1651,10 +1651,9 @@ class AgentsOperations(AgentsOperationsGenerated):
                                 thread_id=thread_id, run_id=run.id, tool_outputs=tool_outputs
                             )
                     else:
-                        logging.warning("Cancelling run.  Automatic function calls not set.")
-                        logging.warning(
-                            "Either set it by enable_auto_function_calls or invoke function calls manually along with create_run."
-                        )
+
+                        logging.warning("Run cancelled. Set auto function calls or invoke manually with create_run.")
+
                         await self.cancel_run(thread_id=thread_id, run_id=run.id)
                         break
 
@@ -3134,8 +3133,7 @@ class AgentsOperations(AgentsOperationsGenerated):
 
     @overload
     def enable_auto_function_calls(self, *, functions: Set[Callable[..., Any]]) -> None:
-        """Setup tool calls for the agent to be executed automatically during create_and_process_run or streaming.  If this is not set, function calls must be called manually.
-
+        """Enables tool calls to be executed automatically during create_and_process_run or streaming.  If this is not set, functios must be called manually.
         :keyword functions: A set of callable functions to be used as tools.
         :type functions: Set[Callable[..., Any]]
         """
