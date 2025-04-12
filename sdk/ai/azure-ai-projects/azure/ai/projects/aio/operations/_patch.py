@@ -3134,7 +3134,7 @@ class AgentsOperations(AgentsOperationsGenerated):
     @overload
     def enable_auto_function_calls(self, *, functions: Set[Callable[..., Any]]) -> None:
         """Enables tool calls to be executed automatically during create_and_process_run or streaming.
-        If this is not set, functios must be called manually.
+        If this is not set, functions must be called manually.
         :keyword functions: A set of callable functions to be used as tools.
         :type functions: Set[Callable[..., Any]]
         """
