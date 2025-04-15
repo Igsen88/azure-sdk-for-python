@@ -3134,7 +3134,7 @@ class AgentsOperations(AgentsOperationsGenerated):
     @overload
     def enable_auto_function_calls(self, *, function_tool: _models.AsyncFunctionTool) -> None:
         """Enables tool calls to be executed automatically during create_and_process_run or streaming.
-
+        If this is not set, functions must be called manually.
         :keyword function_tool: An AsyncFunctionTool object representing the tool to be used.
         :type function_tool: Optional[_models.AsyncFunctionTool]
         """
@@ -3142,7 +3142,7 @@ class AgentsOperations(AgentsOperationsGenerated):
     @overload
     def enable_auto_function_calls(self, *, toolset: _models.AsyncToolSet) -> None:
         """Enables tool calls to be executed automatically during create_and_process_run or streaming.
-
+        If this is not set, functions must be called manually.
         :keyword toolset: An AsyncToolSet object representing the set of tools to be used.
         :type toolset: Optional[_models.AsyncToolSet]
         """
@@ -3155,7 +3155,7 @@ class AgentsOperations(AgentsOperationsGenerated):
         toolset: Optional[_models.AsyncToolSet] = None,
     ) -> None:
         """Enables tool calls to be executed automatically during create_and_process_run or streaming.
-
+        If this is not set, functions must be called manually.
         :keyword functions: A set of callable functions to be used as tools.
         :type functions: Set[Callable[..., Any]]
         :keyword function_tool: An AsyncFunctionTool object representing the tool to be used.
