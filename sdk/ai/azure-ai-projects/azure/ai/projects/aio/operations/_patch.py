@@ -1638,24 +1638,19 @@ class AgentsOperations(AgentsOperationsGenerated):
                     break
                 # We need tool set only if we are executing local function. In case if
                 # the tool is azure_function we just need to wait when it will be finished.
-                if any(tool_call.type == "function" for tool_call in tool_calls):
+                if (
+                    any(tool_call.type == "function" for tool_call in tool_calls)
+                    and len(self._function_tool.definitions) > 0
+                ):
+                    toolset = _models.AsyncToolSet()
+                    toolset.add(self._function_tool)
+                    tool_outputs = await toolset.execute_tool_calls(tool_calls)
 
-                    if len(self._function_tool.definitions) > 0:
-                        toolset = _models.AsyncToolSet()
-                        toolset.add(self._function_tool)
-                        tool_outputs = await toolset.execute_tool_calls(tool_calls)
-
-                        logging.info("Tool outputs: %s", tool_outputs)
-                        if tool_outputs:
-                            await self.submit_tool_outputs_to_run(
-                                thread_id=thread_id, run_id=run.id, tool_outputs=tool_outputs
-                            )
-                    else:
-
-                        logging.warning("Run cancelled. Set auto function calls or invoke manually with create_run.")
-
-                        await self.cancel_run(thread_id=thread_id, run_id=run.id)
-                        break
+                    logging.info("Tool outputs: %s", tool_outputs)
+                    if tool_outputs:
+                        run = await self.submit_tool_outputs_to_run(
+                            thread_id=thread_id, run_id=run.id, tool_outputs=tool_outputs
+                        )
 
             logging.info("Current run status: %s", run.status)
 
