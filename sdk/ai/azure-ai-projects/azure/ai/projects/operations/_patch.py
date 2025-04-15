@@ -3316,7 +3316,7 @@ class AgentsOperations(AgentsOperationsGenerated):
 
     @overload
     def enable_auto_function_calls(self, *, function_tool: _models.FunctionTool) -> None:
-        """Setup tool calls for the agent to be executed automatically.
+        """Enables tool calls to be executed automatically during create_and_process_run or streaming.
 
         :keyword function_tool: A FunctionTool object representing the tool to be used.
         :type function_tool: Optional[_models.FunctionTool]
@@ -3324,7 +3324,7 @@ class AgentsOperations(AgentsOperationsGenerated):
 
     @overload
     def enable_auto_function_calls(self, *, toolset: _models.ToolSet) -> None:
-        """Setup tool calls for the agent to be executed automatically.
+        """Enables tool calls to be executed automatically during create_and_process_run or streaming.
 
         :keyword toolset: A ToolSet object representing the set of tools to be used.
         :type toolset: Optional[_models.ToolSet]
@@ -3338,7 +3338,7 @@ class AgentsOperations(AgentsOperationsGenerated):
         function_tool: Optional[_models.FunctionTool] = None,
         toolset: Optional[_models.ToolSet] = None,
     ) -> None:
-        """Setup tool calls for the agent to be executed automatically.
+        """Enables tool calls to be executed automatically during create_and_process_run or streaming.
 
         :keyword functions: A set of callable functions to be used as tools.
         :type functions: Set[Callable[..., Any]]
